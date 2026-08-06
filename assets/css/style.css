@@ -1,0 +1,170 @@
+/* ── Base reset ── */
+* { box-sizing: border-box; }
+html { font-family: 'Inter', sans-serif; }
+body { background-color: #08080F; color: #F1F5F9; overflow-x: hidden; }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #08080F; }
+::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 4px; }
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #7C3AED, #06B6D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-pink {
+  background: linear-gradient(135deg, #EC4899, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Scroll reveal ── */
+.reveal { opacity: 0; transform: translateY(32px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Glassmorphism card ── */
+.glass {
+  background: rgba(19, 19, 31, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Navbar (scrolled state) ── */
+.nav-scrolled {
+  background: rgba(8, 8, 15, 0.9) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Typing cursor ── */
+.cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #7C3AED;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── Avatar animated gradient ring ── */
+.avatar-ring {
+  background: linear-gradient(135deg, #7C3AED, #06B6D4, #EC4899, #7C3AED);
+  background-size: 300% 300%;
+  animation: gradient 4s ease infinite;
+  padding: 3px;
+  border-radius: 50%;
+}
+@keyframes gradient {
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* ── Project cards ── */
+.project-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-gradient);
+  transition: height 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px var(--card-glow);
+}
+.project-card:hover::before { height: 3px; }
+
+/* ── Card hover overlay ── */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,15,0.97) 40%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+}
+.project-card:hover .card-overlay { opacity: 1; }
+
+/* ── Timeline dot marker ── */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -33px; top: 8px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7C3AED, #06B6D4);
+  box-shadow: 0 0 12px rgba(124,58,237,0.6);
+}
+
+/* ── Skill chips ── */
+.skill-chip {
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.skill-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(124,58,237,0.3);
+}
+
+/* ── Tech badge pills ── */
+.tech-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+/* ── Ambient background orbs ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section numbering label ── */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7C3AED;
+}
+
+/* ── Contact link hover ── */
+.contact-link {
+  transition: all 0.2s ease;
+}
+.contact-link:hover {
+  color: #06B6D4;
+  transform: translateX(4px);
+}
+
+/* ── Mobile nav transition ── */
+#mobile-menu {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

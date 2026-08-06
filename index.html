@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keshara Indukumara — Full-Stack Developer</title>
+  <meta name="description" content="Personal portfolio of Keshara Indukumara, Associate Software Engineer and passionate Full-Stack Developer based in Sri Lanka." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            bg: {
+              base: '#08080F',
+              surface: '#0E0E1A',
+              card: '#13131F',
+              border: 'rgba(255,255,255,0.06)',
+            },
+            accent: {
+              violet: '#7C3AED',
+              cyan: '#06B6D4',
+              pink: '#EC4899',
+            },
+            text: {
+              primary: '#F1F5F9',
+              muted: '#64748B',
+              subtle: '#334155',
+            }
+          },
+          backgroundImage: {
+            'gradient-accent': 'linear-gradient(135deg, #7C3AED, #06B6D4)',
+            'gradient-accent-pink': 'linear-gradient(135deg, #EC4899, #7C3AED)',
+            'gradient-card': 'linear-gradient(145deg, #13131F, #0E0E1A)',
+          },
+          boxShadow: {
+            'glow-violet': '0 0 30px rgba(124, 58, 237, 0.3)',
+            'glow-cyan': '0 0 30px rgba(6, 182, 212, 0.25)',
+            'glow-sm': '0 0 15px rgba(124, 58, 237, 0.2)',
+            'card': '0 4px 24px rgba(0,0,0,0.4)',
+            'card-hover': '0 12px 40px rgba(0,0,0,0.6)',
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease forwards',
+            'pulse-slow': 'pulse 3s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'gradient': 'gradient 6s ease infinite',
+            'spin-slow': 'spin 8s linear infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="relative">
+
+  <!-- Ambient background orbs -->
+  <div class="orb w-[600px] h-[600px] bg-violet-900/20 top-[-200px] left-[-200px]"></div>
+  <div class="orb w-[500px] h-[500px] bg-cyan-900/15 top-[40%] right-[-150px]"></div>
+  <div class="orb w-[400px] h-[400px] bg-pink-900/10 bottom-[10%] left-[20%]"></div>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="font-mono text-sm font-medium gradient-text">
+        &lt;KI /&gt;
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm text-text-muted hover:text-text-primary transition-colors duration-200">About</a>
+        <a href="#experience" class="text-sm text-text-muted hover:text-text-primary transition-colors duration-200">Experience</a>
+        <a href="#projects" class="text-sm text-text-muted hover:text-text-primary transition-colors duration-200">Projects</a>
+        <a href="#skills" class="text-sm text-text-muted hover:text-text-primary transition-colors duration-200">Skills</a>
+        <a href="#contact" class="text-sm text-text-muted hover:text-text-primary transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- CTA + Hamburger -->
+      <div class="flex items-center gap-4">
+        <a href="mailto:kesharaindukumara@outlook.com"
+           class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold border border-violet-500/30 text-violet-300 hover:bg-violet-500/10 hover:border-violet-400 transition-all duration-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Hire Me
+        </a>
+        <!-- Hamburger -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle Menu">
+          <span class="ham-line block w-5 h-0.5 bg-text-primary transition-all duration-300 origin-center"></span>
+          <span class="ham-line block w-5 h-0.5 bg-text-primary transition-all duration-300"></span>
+          <span class="ham-line block w-5 h-0.5 bg-text-primary transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden glass border-t border-white/5">
+      <div class="flex flex-col py-4 px-6 gap-1">
+        <a href="#about" class="mobile-nav-link py-3 text-sm text-text-muted hover:text-text-primary border-b border-white/5">About</a>
+        <a href="#experience" class="mobile-nav-link py-3 text-sm text-text-muted hover:text-text-primary border-b border-white/5">Experience</a>
+        <a href="#projects" class="mobile-nav-link py-3 text-sm text-text-muted hover:text-text-primary border-b border-white/5">Projects</a>
+        <a href="#skills" class="mobile-nav-link py-3 text-sm text-text-muted hover:text-text-primary border-b border-white/5">Skills</a>
+        <a href="#contact" class="mobile-nav-link py-3 text-sm text-text-muted hover:text-text-primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20">
+    <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Text side -->
+      <div class="order-2 md:order-1">
+        <p class="section-label mb-4">👋 Hello, I'm</p>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 leading-none">
+          Keshara<br/>
+          <span class="gradient-text">Indukumara</span>
+        </h1>
+        <div class="flex items-center gap-2 mb-6 h-8">
+          <span class="text-text-muted text-lg font-light">I build</span>
+          <span id="typing-text" class="text-lg font-semibold gradient-text cursor"></span>
+        </div>
+        <p class="text-text-muted text-base leading-relaxed mb-8 max-w-md">
+          Associate Software Engineer & passionate Full-Stack Developer based in Kelanimulla, Sri Lanka. Currently contributing at <span class="text-violet-400 font-medium">Helixa Solutions</span> using Next.js, Spring Boot & SQL.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#projects"
+             class="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white shadow-glow-violet transition-all duration-300 hover:scale-105">
+            View Projects
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#contact"
+             class="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-white/10 hover:border-violet-500/50 hover:bg-violet-500/5 text-text-primary transition-all duration-300">
+            Get In Touch
+          </a>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener" aria-label="GitHub"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:border-violet-500/50 hover:text-violet-400 text-text-muted transition-all duration-200 hover:scale-110">
+            <svg class="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/keshara-indukumara" target="_blank" rel="noopener" aria-label="LinkedIn"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:border-cyan-500/50 hover:text-cyan-400 text-text-muted transition-all duration-200 hover:scale-110">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:kesharaindukumara@outlook.com" aria-label="Email"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:border-pink-500/50 hover:text-pink-400 text-text-muted transition-all duration-200 hover:scale-110">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <span class="text-text-subtle text-xs font-mono pl-2">+94-77-548-6816</span>
+        </div>
+      </div>
+
+      <!-- Avatar side -->
+      <div class="order-1 md:order-2 flex justify-center">
+        <div class="relative">
+          <!-- Decorative rings -->
+          <div class="absolute inset-[-20px] rounded-full border border-violet-500/10 animate-ping" style="animation-duration:3s"></div>
+          <div class="absolute inset-[-40px] rounded-full border border-cyan-500/5"></div>
+
+          <!-- Avatar glow ring -->
+          <div class="avatar-ring" style="width:260px;height:260px;display:flex;align-items:center;justify-content:center;">
+            <div class="rounded-full overflow-hidden" style="width:252px;height:252px;background:#0E0E1A;">
+              <img src="assets/images/dp.jpg" alt="Keshara Indukumara" class="w-full h-full object-cover" id="profile-img" />
+            </div>
+          </div>
+
+          <!-- Status badge -->
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full glass border border-green-500/20 whitespace-nowrap">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            <span class="text-xs text-green-400 font-medium">Available for hire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-subtle">
+      <span class="text-xs font-mono">scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-violet-500/50 to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section id="about" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <p class="section-label mb-3">01. About</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Who I <span class="gradient-text">Am</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-12 items-start">
+        <!-- Bio -->
+        <div class="md:col-span-3 reveal">
+          <p class="text-text-muted leading-relaxed mb-5 text-base">
+            Passionate Full-Stack Developer with hands-on experience building responsive web applications and scalable REST APIs. Currently contributing at <span class="text-violet-400 font-semibold">Helixa Solutions</span>, where I work across the stack using <span class="text-cyan-400 font-semibold">Next.js, Spring Boot, and SQL</span> to deliver real-world solutions.
+          </p>
+          <p class="text-text-muted leading-relaxed mb-5 text-base">
+            I'm driven by a genuine love for problem-solving. I enjoy breaking down complex challenges and engineering clean, maintainable code that makes a difference.
+          </p>
+          <p class="text-text-muted leading-relaxed text-base">
+            I collaborate well in team environments, value clear communication, and bring a disciplined, detail-oriented approach to every project. Always eager to explore new technologies and grow as a developer.
+          </p>
+
+          <!-- Info grid -->
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="glass rounded-xl p-4">
+              <p class="text-text-subtle text-xs mb-1">Location</p>
+              <p class="text-text-primary text-sm font-medium">📍 Kelanimulla, Sri Lanka</p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <p class="text-text-subtle text-xs mb-1">Current Role</p>
+              <p class="text-text-primary text-sm font-medium">💼 Full-Stack Dev Intern</p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <p class="text-text-subtle text-xs mb-1">Education</p>
+              <p class="text-text-primary text-sm font-medium">🎓 BIT — Uni of Colombo</p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <p class="text-text-subtle text-xs mb-1">Experience</p>
+              <p class="text-text-primary text-sm font-medium">⚡ 6+ months (dev)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills cloud -->
+        <div class="md:col-span-2 reveal">
+          <p class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-4">Tech I work with</p>
+          <div class="flex flex-wrap gap-2">
+            <!-- Languages -->
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-violet-500/10 border border-violet-500/20 text-violet-300">JavaScript</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-500/10 border border-blue-500/20 text-blue-300">TypeScript</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-orange-500/10 border border-orange-500/20 text-orange-300">Java</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-yellow-500/10 border border-yellow-500/20 text-yellow-300">Python</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 border border-red-500/20 text-red-300">HTML/CSS</span>
+            <!-- Frameworks -->
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">Next.js</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">React</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-green-500/10 border border-green-500/20 text-green-300">Spring Boot</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-500/10 border border-purple-500/20 text-purple-300">Tailwind CSS</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-pink-500/10 border border-pink-500/20 text-pink-300">Electron</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">JavaFX</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">Hibernate</span>
+            <!-- DB -->
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-sky-500/10 border border-sky-500/20 text-sky-300">MySQL</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-sky-500/10 border border-sky-500/20 text-sky-300">SQLite</span>
+            <!-- Tools -->
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-500/10 border border-slate-500/20 text-slate-300">Git/GitHub</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-500/10 border border-slate-500/20 text-slate-300">VS Code</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-500/10 border border-slate-500/20 text-slate-300">IntelliJ IDEA</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-rose-500/10 border border-rose-500/20 text-rose-300">Postman</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300">Figma</span>
+            <span class="skill-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-500/10 border border-teal-500/20 text-teal-300">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <section id="experience" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <p class="section-label mb-3">02. Experience</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Work <span class="gradient-text">History</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Helixa Solutions -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-violet-500/20 transition-all duration-300">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-semibold mb-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                Current
+              </span>
+              <h3 class="text-text-primary font-bold text-lg">Full-Stack Developer Intern</h3>
+              <p class="text-violet-400 font-medium text-sm">Helixa Solutions</p>
+            </div>
+            <span class="text-text-subtle text-xs font-mono whitespace-nowrap ml-2">2025 — Present</span>
+          </div>
+          <ul class="space-y-2">
+            <li class="flex gap-2 text-text-muted text-sm"><span class="text-violet-400 mt-0.5 flex-shrink-0">▸</span>Built & maintained features in production-level Next.js applications</li>
+            <li class="flex gap-2 text-text-muted text-sm"><span class="text-violet-400 mt-0.5 flex-shrink-0">▸</span>Developed AI-assisted development skills to improve productivity</li>
+            <li class="flex gap-2 text-text-muted text-sm"><span class="text-violet-400 mt-0.5 flex-shrink-0">▸</span>Performed bug fixing & debugging across the codebase</li>
+            <li class="flex gap-2 text-text-muted text-sm"><span class="text-violet-400 mt-0.5 flex-shrink-0">▸</span>Participated in post-development testing & client communication</li>
+          </ul>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-badge bg-cyan-500/10 border-cyan-500/20 text-cyan-300">Next.js</span>
+            <span class="tech-badge bg-blue-500/10 border-blue-500/20 text-blue-300">TypeScript</span>
+            <span class="tech-badge bg-green-500/10 border-green-500/20 text-green-300">Spring Boot</span>
+            <span class="tech-badge bg-sky-500/10 border-sky-500/20 text-sky-300">SQL</span>
+          </div>
+        </div>
+
+        <!-- Power House Ltd -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all duration-300">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-500/10 border border-slate-500/20 text-slate-400 text-xs font-semibold mb-3">
+                Completed
+              </span>
+              <h3 class="text-text-primary font-bold text-lg">Audio Operator</h3>
+              <p class="text-cyan-400 font-medium text-sm">Power House Ltd. (TV Derana)</p>
+            </div>
+            <span class="text-text-subtle text-xs font-mono whitespace-nowrap ml-2">2020 — 2025</span>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Skilled Audio Operator with 5+ years of experience in live broadcast mixing, audio troubleshooting, and studio/remote productions using Analog & Digital consoles.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-badge bg-orange-500/10 border-orange-500/20 text-orange-300">Live Broadcast</span>
+            <span class="tech-badge bg-rose-500/10 border-rose-500/20 text-rose-300">Audio Production</span>
+            <span class="tech-badge bg-yellow-500/10 border-yellow-500/20 text-yellow-300">Analog/Digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <p class="section-label mb-3">03. Projects</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What I've <span class="gradient-text">Built</span></h2>
+        <p class="text-text-muted text-base mb-12 max-w-xl">A curated collection of projects showcasing my full-stack skills across web, desktop, and backend systems.</p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- FEATURED: ReconcileX (spans 2 cols) -->
+        <div class="project-card lg:col-span-2 glass rounded-2xl p-6 border border-white/5"
+             style="--card-gradient: linear-gradient(90deg, #7C3AED, #06B6D4); --card-glow: rgba(124,58,237,0.25);">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-500/15 border border-violet-500/30 text-violet-300 text-xs font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+                  In Progress
+                </span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 text-xs font-semibold">⭐ Featured</span>
+              </div>
+              <h3 class="text-text-primary font-bold text-xl">ReconcileX</h3>
+              <p class="text-violet-400 text-sm font-medium">Reconciliation Automation Tool</p>
+            </div>
+            <span class="text-text-subtle text-xs font-mono">Apr 2026 – Present</span>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            A cross-platform desktop application for advanced reconciliation automation, enabling reliable and scalable comparison of financial, business, and operational data. Features automated data upload, matching, customizable reconciliation rules engine, result visualization with clear reports, error identification, and step-by-step audit trails.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="tech-badge bg-blue-500/10 border-blue-500/20 text-blue-300">TypeScript</span>
+            <span class="tech-badge bg-violet-500/10 border-violet-500/20 text-violet-300">JavaScript</span>
+            <span class="tech-badge bg-pink-500/10 border-pink-500/20 text-pink-300">Electron</span>
+            <span class="tech-badge bg-sky-500/10 border-sky-500/20 text-sky-300">SQLite</span>
+          </div>
+          <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-xs font-semibold text-violet-300 hover:text-violet-200 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- BusEase -->
+        <div class="project-card glass rounded-2xl p-6 border border-white/5"
+             style="--card-gradient: linear-gradient(90deg, #06B6D4, #3B82F6); --card-glow: rgba(6,182,212,0.2);">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-500/10 border border-slate-500/20 text-slate-300 text-xs font-semibold mb-2">Completed</span>
+              <h3 class="text-text-primary font-bold text-lg">BusEase Ticketing</h3>
+              <p class="text-cyan-400 text-sm font-medium">Full-Stack Web App</p>
+            </div>
+            <span class="text-text-subtle text-xs font-mono">Aug 2025</span>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            Three-actor web app centralising bus ticket purchasing and route management for commuters and operators. Browse routes, book with seat selection, view history.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="tech-badge bg-cyan-500/10 border-cyan-500/20 text-cyan-300">React</span>
+            <span class="tech-badge bg-blue-500/10 border-blue-500/20 text-blue-300">TypeScript</span>
+            <span class="tech-badge bg-green-500/10 border-green-500/20 text-green-300">Spring Boot</span>
+            <span class="tech-badge bg-sky-500/10 border-sky-500/20 text-sky-300">MySQL</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 hover:text-cyan-200 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Frontend
+            </a>
+            <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-300 hover:text-blue-200 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Backend
+            </a>
+          </div>
+        </div>
+
+        <!-- Clothify -->
+        <div class="project-card glass rounded-2xl p-6 border border-white/5"
+             style="--card-gradient: linear-gradient(90deg, #EC4899, #F59E0B); --card-glow: rgba(236,72,153,0.2);">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-500/10 border border-slate-500/20 text-slate-300 text-xs font-semibold mb-2">Completed</span>
+              <h3 class="text-text-primary font-bold text-lg">Clothify Store POS</h3>
+              <p class="text-pink-400 text-sm font-medium">Desktop Application</p>
+            </div>
+            <span class="text-text-subtle text-xs font-mono">July 2025</span>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            JavaFX desktop POS system for clothing store management. Product management, inventory tracking, sales processing, customer management, and reports.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="tech-badge bg-orange-500/10 border-orange-500/20 text-orange-300">JavaFX</span>
+            <span class="tech-badge bg-sky-500/10 border-sky-500/20 text-sky-300">MySQL</span>
+            <span class="tech-badge bg-yellow-500/10 border-yellow-500/20 text-yellow-300">Scene Builder</span>
+            <span class="tech-badge bg-green-500/10 border-green-500/20 text-green-300">Google Guice</span>
+          </div>
+          <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-300 hover:text-pink-200 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- MOS Burger -->
+        <div class="project-card glass rounded-2xl p-6 border border-white/5"
+             style="--card-gradient: linear-gradient(90deg, #10B981, #06B6D4); --card-glow: rgba(16,185,129,0.2);">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+            <div>
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-500/10 border border-slate-500/20 text-slate-300 text-xs font-semibold mb-2">Completed</span>
+              <h3 class="text-text-primary font-bold text-lg">MOS Burger System</h3>
+              <p class="text-emerald-400 text-sm font-medium">Full-Stack Web App</p>
+            </div>
+          </div>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            Full-stack burger shop ordering system. Menu management, order placement, customer records, and report generation using Spring Boot with Hibernate ORM.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="tech-badge bg-green-500/10 border-green-500/20 text-green-300">Spring Boot</span>
+            <span class="tech-badge bg-red-500/10 border-red-500/20 text-red-300">HTML/CSS/JS</span>
+            <span class="tech-badge bg-emerald-500/10 border-emerald-500/20 text-emerald-300">Hibernate</span>
+            <span class="tech-badge bg-sky-500/10 border-sky-500/20 text-sky-300">ORM</span>
+          </div>
+          <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-300 hover:text-emerald-200 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EDUCATION ═══════════════ -->
+  <section id="education" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <p class="section-label mb-3">04. Education</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Academic <span class="gradient-text">Journey</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Education Timeline -->
+        <div class="space-y-4 reveal">
+          <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-6">Education</h3>
+
+          <!-- BIT -->
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-violet-500/20 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div>
+                <p class="text-text-primary font-semibold text-sm">Bachelor of Information Technology (BIT)</p>
+                <p class="text-violet-400 text-xs mt-0.5">University of Colombo</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono whitespace-nowrap">2024 – Present</span>
+            </div>
+            <p class="text-text-muted text-xs leading-relaxed">Currently in 2nd year. Core computing fundamentals, OOP, data structures, algorithms, computer networking.</p>
+          </div>
+
+          <!-- iCET -->
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-cyan-500/20 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div>
+                <p class="text-text-primary font-semibold text-sm">ICD Developer Programme</p>
+                <p class="text-cyan-400 text-xs mt-0.5">iCET</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono whitespace-nowrap">2024 – 2025</span>
+            </div>
+            <p class="text-text-muted text-xs leading-relaxed">Industry-focused developer programme. React, Next.js, professional tools & frameworks, real-world software engineering.</p>
+          </div>
+
+          <!-- A/L -->
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-slate-500/20 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div>
+                <p class="text-text-primary font-semibold text-sm">G.C.E. Advanced Level — Technology</p>
+                <p class="text-slate-400 text-xs mt-0.5">Technology Stream</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono whitespace-nowrap">2019</span>
+            </div>
+            <p class="text-text-muted text-xs">ICT (C), Science for Technology (S), Engineering Technology (S)</p>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="space-y-4 reveal">
+          <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-6">Certifications</h3>
+
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-blue-500/20 transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <p class="text-text-primary text-sm font-medium">Kubernetes For Absolute Beginners</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono">2026</span>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-yellow-500/20 transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <p class="text-text-primary text-sm font-medium">Linux For Absolute Beginners</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono">2026</span>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-cyan-500/20 transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <p class="text-text-primary text-sm font-medium">Docker For Absolute Beginners</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono">2026</span>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border border-white/5 hover:border-violet-500/20 transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <p class="text-text-primary text-sm font-medium">Web Design & Python — Uni of Moratuwa</p>
+              </div>
+              <span class="text-text-subtle text-xs font-mono">2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section id="skills" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <p class="section-label mb-3">05. Skills</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Tech <span class="gradient-text">Stack</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Languages -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-violet-500/20 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-500/10 border border-violet-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="text-text-primary font-semibold text-sm mb-3">Languages</h3>
+          <ul class="space-y-2">
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-violet-400"></span>Java</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-violet-400"></span>JavaScript</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-violet-400"></span>TypeScript</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-violet-400"></span>HTML / CSS</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-violet-400"></span>Python</li>
+          </ul>
+        </div>
+
+        <!-- Frameworks -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="text-text-primary font-semibold text-sm mb-3">Frameworks</h3>
+          <ul class="space-y-2">
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-cyan-400"></span>Spring Boot</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-cyan-400"></span>Electron</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-cyan-400"></span>JavaFX / JPA</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-cyan-400"></span>Hibernate</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-cyan-400"></span>Tailwind / Bootstrap</li>
+          </ul>
+        </div>
+
+        <!-- Databases -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-pink-500/20 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/20 to-rose-500/10 border border-pink-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+          </div>
+          <h3 class="text-text-primary font-semibold text-sm mb-3">Database</h3>
+          <ul class="space-y-2">
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-pink-400"></span>MySQL</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-pink-400"></span>SQLite</li>
+          </ul>
+          <h3 class="text-text-primary font-semibold text-sm mb-3 mt-4">Learning</h3>
+          <ul class="space-y-2">
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-pink-400"></span>Next.js</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-pink-400"></span>React</li>
+          </ul>
+        </div>
+
+        <!-- Tools -->
+        <div class="reveal glass rounded-2xl p-6 border border-white/5 hover:border-emerald-500/20 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-text-primary font-semibold text-sm mb-3">Tools</h3>
+          <ul class="space-y-2">
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>IntelliJ IDEA</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>VS Code</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>Git / GitHub</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>Figma</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>Postman</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>Docker</li>
+            <li class="text-text-muted text-xs flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-emerald-400"></span>Swagger</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <p class="section-label mb-3">06. Contact</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's <span class="gradient-text">Connect</span></h2>
+      <p class="text-text-muted text-base mb-12 max-w-lg mx-auto">
+        I'm currently open to new opportunities. Whether you have a project in mind, a question, or just want to say hi — my inbox is always open.
+      </p>
+
+      <!-- Contact cards -->
+      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <a href="mailto:kesharaindukumara@outlook.com"
+           class="glass rounded-2xl p-6 border border-white/5 hover:border-violet-500/30 transition-all duration-300 hover:-translate-y-1 group text-left">
+          <div class="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-3 group-hover:bg-violet-500/20 transition-colors">
+            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <p class="text-text-muted text-xs mb-1">Email</p>
+          <p class="text-text-primary text-xs font-medium break-all">kesharaindukumara@outlook.com</p>
+        </a>
+
+        <a href="tel:+94775486816"
+           class="glass rounded-2xl p-6 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 group text-left">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-3 group-hover:bg-cyan-500/20 transition-colors">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <p class="text-text-muted text-xs mb-1">Phone</p>
+          <p class="text-text-primary text-xs font-medium">+94-77-548-6816</p>
+        </a>
+
+        <a href="https://www.linkedin.com/in/keshara-indukumara" target="_blank" rel="noopener"
+           class="glass rounded-2xl p-6 border border-white/5 hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-1 group text-left">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-3 group-hover:bg-pink-500/20 transition-colors">
+            <svg class="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <p class="text-text-muted text-xs mb-1">LinkedIn</p>
+          <p class="text-text-primary text-xs font-medium">keshara-indukumara</p>
+        </a>
+      </div>
+
+      <!-- Big CTA -->
+      <a href="mailto:kesharaindukumara@outlook.com"
+         class="inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white shadow-glow-violet transition-all duration-300 hover:scale-105 hover:shadow-glow-cyan">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Say Hello
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="py-8 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-text-subtle text-xs font-mono">
+        Built with ❤️ by <span class="gradient-text font-semibold">Keshara Indukumara</span>
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener" aria-label="GitHub"
+           class="text-text-subtle hover:text-violet-400 transition-colors duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/keshara-indukumara" target="_blank" rel="noopener" aria-label="LinkedIn"
+           class="text-text-subtle hover:text-cyan-400 transition-colors duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:kesharaindukumara@outlook.com" aria-label="Email"
+           class="text-text-subtle hover:text-pink-400 transition-colors duration-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
