@@ -97,7 +97,7 @@
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <!-- Logo -->
       <a href="#hero" class="font-mono text-sm font-medium gradient-text">
-        &lt;KI /&gt;
+        &lt;KESH /&gt;
       </a>
 
       <!-- Desktop Nav -->
@@ -150,17 +150,20 @@
   </nav>
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20">
-    <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
+  <section id="hero" class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20">
+    <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
       <!-- Text side -->
-      <div class="order-2 md:order-1">
-        <p class="section-label mb-4">👋 Hello, I'm</p>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 leading-none">
+      <div class="order-2 md:order-1 text-center md:text-left">
+        <p class="section-label mb-4 flex items-center gap-2">
+          <img src="assets/images/svg/robot.svg" alt="Robot" class="w-6 h-6 inline-block" style="filter: drop-shadow(0 0 6px rgba(124,58,237,0.7));" />
+          Hello, I'm
+        </p>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 leading-none">
           Keshara<br />
           <span class="gradient-text">Indukumara</span>
         </h1>
-        <div class="flex items-center gap-2 mb-6 h-8">
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-6 h-8">
           <span class="text-text-muted text-lg font-light">I build</span>
           <span id="typing-text" class="text-lg font-semibold gradient-text cursor"></span>
         </div>
@@ -170,7 +173,7 @@
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-wrap gap-4 mb-10">
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-10">
           <a href="#projects"
             class="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white shadow-glow-violet transition-all duration-300 hover:scale-105">
             View Projects
@@ -185,7 +188,7 @@
         </div>
 
         <!-- Social links -->
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
           <a href="https://github.com/kesharaindukumara" target="_blank" rel="noopener" aria-label="GitHub"
             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:border-violet-500/50 hover:text-violet-400 text-text-muted transition-all duration-200 hover:scale-110">
             <svg class="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -219,17 +222,16 @@
       </div>
 
       <!-- Avatar side -->
-      <div class="order-1 md:order-2 flex justify-center">
+      <div class="order-1 md:order-2 flex justify-center pb-4 md:pb-0">
         <div class="relative">
           <!-- Decorative rings -->
           <div class="absolute inset-[-20px] rounded-full border border-violet-500/10 animate-ping"
             style="animation-duration:3s"></div>
           <div class="absolute inset-[-40px] rounded-full border border-cyan-500/5"></div>
 
-          <!-- Avatar glow ring -->
-          <div class="avatar-ring"
-            style="width:260px;height:260px;display:flex;align-items:center;justify-content:center;">
-            <div class="rounded-full overflow-hidden" style="width:252px;height:252px;background:#0E0E1A;">
+          <!-- Avatar glow ring (responsive) -->
+          <div class="avatar-ring avatar-ring-responsive">
+            <div class="avatar-inner rounded-full overflow-hidden" style="background:#0E0E1A;">
               <img src="assets/images/dp.jpg" alt="Keshara Indukumara" class="w-full h-full object-cover"
                 id="profile-img" />
             </div>
