@@ -1,6 +1,6 @@
 /* ── Base reset ── */
 * { box-sizing: border-box; }
-html { font-family: 'Inter', sans-serif; }
+html { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 body { background-color: #08080F; color: #F1F5F9; overflow-x: hidden; }
 
 /* ── Custom scrollbar ── */
